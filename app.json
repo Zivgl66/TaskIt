@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "scheme": "todoapp",
+    "originalFullName": "@zivgl66/todoapp",
+    "web": {
+      "bundler": "metro"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.zivgl66.todoapp"
+    },
+    "android": {
+      "package": "com.zivgl66.todoapp",
+      "adaptiveIcon": {
+        "foregroundImage": "./Assets/images/appLogo.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "name": "TodoApp",
+    "icon": "./Assets/images/appLogo.png",
+    "slug": "TodoApp",
+    "extra": {
+      "eas": {
+        "projectId": "e082d9cf-aa72-4ffd-b7a6-68f0299f6384"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/e082d9cf-aa72-4ffd-b7a6-68f0299f6384"
+    }
+  }
+}

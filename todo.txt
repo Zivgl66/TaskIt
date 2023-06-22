@@ -1,0 +1,25 @@
+#	User:
+	-add users 
+	- connect to google account.
+
+#	APP:
+	- change app icon 
+	- change app name
+	- add dark / light theme
+	- add settings.
+
+#	Reminder : 
+
+#	Add colors:
+
+#	Buttons:
+
+#	Group:
+
+#	Components:
+
+#	Completed:
+
+#	Task Page:
+- maybe change the design
+
