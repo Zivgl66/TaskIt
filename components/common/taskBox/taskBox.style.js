@@ -8,9 +8,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: SIZES.small,
     borderRadius: SIZES.small,
-    backgroundColor: COLORS.lightWhite,
-    ...SHADOWS.medium,
-    shadowColor: COLORS.white,
     marginTop: SIZES.xxSmall,
     marginRight: SIZES.xxLarge,
   },
@@ -27,7 +24,6 @@ const styles = StyleSheet.create({
   taskTitle: (isCompleted, taskTextSize) => ({
     fontFamily: "MSemiBold",
     fontSize: taskTextSize ? taskTextSize : SIZES.medium,
-    color: "black",
     textDecorationLine: isCompleted === true ? "line-through" : "none",
     marginRight: SIZES.medium,
   }),

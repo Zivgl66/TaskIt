@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   GoogleAuthProvider,
   onAuthStateChanged,
@@ -42,7 +42,9 @@ export const AuthProvider = ({ children }) => {
   useEffect(
     () =>
       onAuthStateChanged(auth, (user) => {
+        console.log("works", user);
         if (user) {
+          console.log("theres a user: ", user);
           setUser(user);
         } else {
           setUser(null);
@@ -50,7 +52,6 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
         setLoadingInitial(false);
       }),
-
     []
   );
   useEffect(() => {
@@ -75,7 +76,7 @@ export const AuthProvider = ({ children }) => {
         await signInWithCredential(auth, credential);
       }
       setLoading(false);
-      return Promise.reject();
+      // return Promise.reject();
     } catch (err) {
       console.error(err);
       setError(err);

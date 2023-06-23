@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -16,6 +16,7 @@ import {
 } from "../../utils/storage_group";
 import { COLORS } from "../../constants";
 import { useIsFocused } from "@react-navigation/native";
+import themeContext from "../../constants/themeContext";
 
 const Task = () => {
   const params = useLocalSearchParams();
@@ -24,6 +25,7 @@ const Task = () => {
   const [allGroups, setAllGroups] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const isFocused = useIsFocused();
+  const theme = useContext(themeContext);
 
   const fetchData = async () => {
     console.log("fetch data in tasks!");
@@ -51,7 +53,7 @@ const Task = () => {
   }, [isFocused]);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme?.backgroundColor }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         refreshControl={

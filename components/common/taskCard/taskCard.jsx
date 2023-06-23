@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { useRouter } from "expo-router";
 import { View, ScrollView, ToastAndroid, Switch, Text } from "react-native";
 import {
@@ -24,6 +24,7 @@ import CardBtn from "../cardBtn/CardBtn";
 import GroupBox from "../groupBox/GroupBox";
 import ScreenHeaderBtn from "../header/ScreenHeaderBtn";
 import ModalGroups from "../modalGroups/ModalGroups";
+import themeContext from "../../../constants/themeContext";
 
 const TaskCard = ({ task, group, allGroups }) => {
   const router = useRouter();
@@ -37,6 +38,8 @@ const TaskCard = ({ task, group, allGroups }) => {
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
+  const theme = useContext(themeContext);
+  console.log(theme);
 
   const toggleSwitch = async () => {
     setIsEnabled((previousState) => !previousState);
@@ -94,7 +97,14 @@ const TaskCard = ({ task, group, allGroups }) => {
   }, []);
 
   return (
-    <ScrollView showsHorizontalScrollIndicator={false} style={{ flex: 1 }}>
+    <ScrollView
+      showsHorizontalScrollIndicator={false}
+      style={{ flex: 1, backgroundColor: COLORS.lightWhite }}
+      contentContainerStyle={{
+        flex: 1,
+        backgroundColor: theme?.backgroundColor,
+      }}
+    >
       {isModalVisible && (
         <ModalColor
           isModalVisible={isModalVisible}
@@ -110,7 +120,7 @@ const TaskCard = ({ task, group, allGroups }) => {
           allGroups={allGroups}
         />
       )}
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: COLORS.lightWhite }]}>
         <View style={styles.containerTaskDetails}>
           {isEditing ? (
             <TaskEdit
@@ -122,7 +132,12 @@ const TaskCard = ({ task, group, allGroups }) => {
             <TaskBox task={task} taskTextSize={SIZES.large} />
           )}
         </View>
-        <View style={styles.groupContainer}>
+        <View
+          style={[
+            styles.groupContainer,
+            { backgroundColor: COLORS.lightWhite },
+          ]}
+        >
           {group ? (
             <GroupBox group={group} />
           ) : (

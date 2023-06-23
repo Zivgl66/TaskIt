@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 
 const Login = () => {
   const { request, promptAsync, loading } = useAuth();
+
   return (
     <View style={{ flex: 1 }}>
       {loading && <ActivityIndicator size="large" color={COLORS.primary} />}

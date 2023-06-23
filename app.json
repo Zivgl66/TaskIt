@@ -2,6 +2,7 @@
   "expo": {
     "scheme": "todoapp",
     "originalFullName": "@zivgl66/todoapp",
+    "userInterfaceStyle": "automatic",
     "web": {
       "bundler": "metro"
     },

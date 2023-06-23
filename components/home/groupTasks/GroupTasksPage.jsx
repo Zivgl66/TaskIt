@@ -5,7 +5,6 @@ import styles from "./groupTasksPage.style";
 import { useIsFocused } from "@react-navigation/native";
 import { COLORS } from "../../../constants";
 import { EventRegister } from "react-native-event-listeners";
-
 import AddGroup from "../../common/addGroup/AddGroup";
 import GroupBox from "../../common/groupBox/GroupBox";
 

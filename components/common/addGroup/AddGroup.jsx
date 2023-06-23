@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, TextInput, ToastAndroid } from "react-native";
 import styles from "./addGroup.style";
 import { icons } from "../../../constants";
 import ScreenHeaderBtn from "../../common/header/ScreenHeaderBtn";
 import { setItemInStorageGroup } from "../../../utils/storage_group";
 import { EventRegister } from "react-native-event-listeners";
-
+import themeContext from "../../../constants/themeContext";
 import { COLORS } from "../../../constants";
 
 const AddGroup = () => {
   const [newGroup, setNewGroup] = useState("");
   const [backgroundColor, setBackgroundColor] = useState(COLORS.lightBGC);
+  const theme = useContext(themeContext);
 
   const handleAddGroup = async () => {
     if (newGroup != "") {
@@ -27,13 +28,18 @@ const AddGroup = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { backgroundColor: theme.backgroundColor }]}
+    >
       <TextInput
         value={newGroup}
         onChangeText={(value) => {
           setNewGroup(value);
         }}
-        style={[styles.textInput, { backgroundColor: backgroundColor }]}
+        style={[
+          styles.textInput,
+          { backgroundColor: backgroundColor, color: theme.text },
+        ]}
         placeholderTextColor="#c2c2c2"
         placeholder="Add a Group"
         onFocus={() => setBackgroundColor(COLORS.darkBGC)}

@@ -1,0 +1,5 @@
+DarkMode: 
+* fix dark mode in out of provider components and routes (group card & task card).
+
+ENV:
+* make an .env file for client ids.

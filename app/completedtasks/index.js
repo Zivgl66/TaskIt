@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { COLORS, SIZES } from "../../constants";
 import { SafeAreaView, ScrollView, View, Text } from "react-native";
 import CompletedTasksPage from "../../components/home/completedTasksPage/completedTasks";
+import themeContext from "../../constants/themeContext";
 
 const CompletedTasks = () => {
+  const theme = useContext(themeContext);
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.backgroundColor }}>
       <ScrollView showsHorizontalScrollIndicator={false}>
         <View
           style={{
             flex: 1,
             padding: SIZES.medium,
-            backgroundColor: COLORS.lightWhite,
+            backgroundColor: theme.backgroundColor,
           }}
         >
           <Text
@@ -20,6 +23,7 @@ const CompletedTasks = () => {
               textAlign: "center",
               fontSize: SIZES.large,
               margin: SIZES.small,
+              color: theme.text,
             }}
           >
             COMPLETED TASKS

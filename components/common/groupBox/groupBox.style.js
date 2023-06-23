@@ -8,11 +8,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: SIZES.small,
     borderRadius: SIZES.small,
-    backgroundColor: COLORS.white,
-    ...SHADOWS.medium,
-    shadowColor: COLORS.white,
     marginTop: SIZES.large,
-    // marginRight: SIZES.xxLarge,
   },
 
   border: (color) => ({

@@ -4,8 +4,6 @@ import { COLORS, SHADOWS, SIZES } from "../../../constants";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.lightWhite,
-    ...SHADOWS.medium,
   },
   containerTaskDetails: {
     marginTop: SIZES.xLarge,
@@ -14,18 +12,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-  btnTitle: {
-    alignSelf: "center",
-    marginRight: SIZES.small,
-  },
-  title: {
-    margin: SIZES.medium,
-    fontSize: SIZES.large,
-    fontFamily: "MBold",
-    color: COLORS.black,
-    textAlign: "left",
-    width: "75%",
   },
   groupContainer: {
     flex: 1,
@@ -53,22 +39,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-  },
-  containerBtns: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  textInput: {
-    fontFamily: "MSemiBold",
-  },
-  taskTitle: {
-    fontFamily: "MSemiBold",
-    fontSize: SIZES.medium,
-    color: COLORS.white,
-  },
-  button: {
-    margin: SIZES.small,
   },
 });
 

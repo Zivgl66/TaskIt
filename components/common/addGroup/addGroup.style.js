@@ -7,9 +7,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: COLORS.lightWhite,
-    ...SHADOWS.medium,
-    shadowColor: COLORS.white,
     marginHorizontal: SIZES.medium,
   },
   textInput: {
