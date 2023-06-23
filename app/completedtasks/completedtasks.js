@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { COLORS, SIZES } from "../../constants";
+import { SIZES } from "../../constants";
 import { SafeAreaView, ScrollView, View, Text } from "react-native";
-import GroupTasksPage from "../../components/home/groupTasks/GroupTasksPage";
+import CompletedTasksPage from "../../components/home/completedTasksPage/completedTasks";
 import themeContext from "../../constants/themeContext";
 
-const GroupTasks = ({ navigation }) => {
+const CompletedTasks = ({ route, navigation }) => {
   const theme = useContext(themeContext);
 
   return (
@@ -12,7 +12,8 @@ const GroupTasks = ({ navigation }) => {
       <ScrollView showsHorizontalScrollIndicator={false}>
         <View
           style={{
-            marginTop: 15,
+            flex: 1,
+            padding: SIZES.medium,
             backgroundColor: theme.backgroundColor,
           }}
         >
@@ -25,13 +26,13 @@ const GroupTasks = ({ navigation }) => {
               color: theme.text,
             }}
           >
-            GROUPS
+            COMPLETED TASKS
           </Text>
-          <GroupTasksPage navigation={navigation} />
+          <CompletedTasksPage navigation={navigation} />
         </View>
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default GroupTasks;
+export default CompletedTasks;

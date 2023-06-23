@@ -8,7 +8,7 @@ import { EventRegister } from "react-native-event-listeners";
 import AddGroup from "../../common/addGroup/AddGroup";
 import GroupBox from "../../common/groupBox/GroupBox";
 
-const GroupTasksPage = () => {
+const GroupTasksPage = ({ navigation }) => {
   const [groupsArray, setGroupsArray] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const isFocused = useIsFocused();
@@ -43,7 +43,11 @@ const GroupTasksPage = () => {
         <View style={styles.containerAllTasks}>
           <SafeAreaView>
             {groupsArray?.map((group, index) => (
-              <GroupBox group={group} key={group + index} />
+              <GroupBox
+                group={group}
+                key={group + index}
+                navigation={navigation}
+              />
             ))}
           </SafeAreaView>
         </View>

@@ -8,7 +8,7 @@ import { COLORS } from "../../../constants";
 import { EventRegister } from "react-native-event-listeners";
 import themeContext from "../../../constants/themeContext";
 
-const CompletedTasksPage = () => {
+const CompletedTasksPage = ({ navigation }) => {
   const [completedTasks, setCompletedTasks] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const isFocused = useIsFocused();
@@ -40,7 +40,7 @@ const CompletedTasksPage = () => {
       ) : completedTasks?.length > 0 ? (
         <View style={styles.containerAllTasks}>
           {completedTasks?.map((task, index) => {
-            return <TaskBox key={index} task={task} />;
+            return <TaskBox key={index} task={task} navigation={navigation} />;
           })}
         </View>
       ) : (

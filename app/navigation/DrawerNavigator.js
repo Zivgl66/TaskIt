@@ -1,6 +1,7 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import BottomTabNavigator from "./TabNavigator";
+import MainStackNavigator from "./StackNavigator";
 import ScreenHeaderProfileBtn from "../../components/common/header/screenheaderProfile";
 import Settings from "../settings";
 import Logout from "../logout";

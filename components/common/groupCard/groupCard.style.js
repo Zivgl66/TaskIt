@@ -5,14 +5,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    // flexDirection: "c",
     padding: SIZES.small,
-    // borderRadius: SIZES.small,
-    backgroundColor: COLORS.lightWhite,
-    ...SHADOWS.medium,
-    shadowColor: COLORS.white,
-    marginTop: SIZES.big,
-    // marginRight: SIZES.xxLarge,
+  },
+  header: {
+    alignSelf: "flex-start",
   },
   containerTop: {
     flex: 1,

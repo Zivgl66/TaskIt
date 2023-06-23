@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
-import { useRouter } from "expo-router";
 import styles from "./groupBox.style";
 import themeContext from "../../../constants/themeContext";
 
-const GroupBox = ({ group }) => {
-  const router = useRouter();
-  const handleGroupPress = () => router.push(`/group/${group.id}`);
+const GroupBox = ({ group, navigation }) => {
+  const handleGroupPress = () =>
+    navigation.navigate("Group", {
+      groupId: group.id,
+    });
   const theme = useContext(themeContext);
 
   return (

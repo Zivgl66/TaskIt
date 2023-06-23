@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from "expo-router";
+// import { useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState, useContext } from "react";
 import {
   SafeAreaView,
@@ -18,8 +18,8 @@ import { COLORS } from "../../constants";
 import { useIsFocused } from "@react-navigation/native";
 import themeContext from "../../constants/themeContext";
 
-const Task = () => {
-  const params = useLocalSearchParams();
+const Task = ({ route, navigation }) => {
+  const { taskId } = route.params;
   const [task, setTask] = useState({});
   const [group, setGroup] = useState({});
   const [allGroups, setAllGroups] = useState([]);
@@ -29,7 +29,7 @@ const Task = () => {
 
   const fetchData = async () => {
     console.log("fetch data in tasks!");
-    const data = await getTaskById(params.id);
+    const data = await getTaskById(taskId);
     if (data) {
       const groupData = await getGroupByName(data.group);
       setGroup(groupData);
@@ -64,7 +64,12 @@ const Task = () => {
           <ActivityIndicator size="large" color={COLORS.primary} />
         ) : (
           <View style={{ marginTop: 30, paddingLeft: 10 }}>
-            <TaskCard task={task} group={group} allGroups={allGroups} />
+            <TaskCard
+              task={task}
+              group={group}
+              allGroups={allGroups}
+              navigation={navigation}
+            />
           </View>
         )}
       </ScrollView>

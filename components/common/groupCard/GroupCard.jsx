@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
 import styles from "./groupCard.style";
@@ -13,19 +13,20 @@ import { deleteGroupById } from "../../../utils/storage_group";
 import { changeTasksGroup, addTaskToGroup } from "../../../utils/storage";
 import ScreenHeaderBtn from "../header/ScreenHeaderBtn";
 import ModalTasks from "../modalTasks/ModalTasks";
+import themeContext from "../../../constants/themeContext";
 
-const GroupCard = ({ group, tasks, allTasks }) => {
-  const router = useRouter();
+const GroupCard = ({ group, tasks, allTasks, navigation }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalTasksVisible, setIsModalTasksVisible] = useState(false);
+  const theme = useContext(themeContext);
 
   const handleDelete = async () => {
     await changeTasksGroup(group.name, "");
     await deleteGroupById(group.id);
     EventRegister.emit("groups changed");
     EventRegister.emit("tasks changed");
-    router.back();
+    navigation.goBack();
   };
   const handleDeleteTask = async (id) => {
     await addTaskToGroup(id, "");
@@ -36,7 +37,13 @@ const GroupCard = ({ group, tasks, allTasks }) => {
   const handleCloseEdit = () => setIsEditing(false);
 
   return (
-    <ScrollView showsHorizontalScrollIndicator={false} style={{ flex: 1 }}>
+    <ScrollView
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{
+        flex: 1,
+        backgroundColor: theme.backgroundColor,
+      }}
+    >
       {isModalVisible && (
         <ModalColor
           isModalVisible={isModalVisible}
@@ -52,7 +59,18 @@ const GroupCard = ({ group, tasks, allTasks }) => {
           allTasks={allTasks}
         />
       )}
-      <View style={styles.container}>
+      <View
+        style={[styles.container, { backgroundColor: theme.backgroundColor }]}
+      >
+        <View style={styles.header}>
+          <ScreenHeaderBtn
+            dimension={"50%"}
+            handlePress={() => {
+              navigation.goBack();
+            }}
+            iconUrl={icons.chevronLeft}
+          />
+        </View>
         <View style={styles.containerTop}>
           <View style={styles.groupColor(group?.color)}></View>
           {isEditing ? (
@@ -102,7 +120,7 @@ const GroupCard = ({ group, tasks, allTasks }) => {
                 iconUrl={icons.trash}
               />
               <View style={styles.taskBox}>
-                <TaskBox task={task} />
+                <TaskBox task={task} navigation={navigation} />
               </View>
             </View>
           ))}

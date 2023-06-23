@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { View, ScrollView, SafeAreaView, Text } from "react-native";
-
-import { COLORS, SIZES } from "../constants";
+import { SIZES } from "../constants";
 import TodaysTasks from "../components/home/allTasks/TodaysTasks";
 import themeContext from "../constants/themeContext";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const theme = useContext(themeContext);
 
   return (
@@ -31,7 +30,7 @@ const Home = () => {
           </Text>
         </View>
         <View>
-          <TodaysTasks />
+          <TodaysTasks navigation={navigation} />
         </View>
       </ScrollView>
     </SafeAreaView>

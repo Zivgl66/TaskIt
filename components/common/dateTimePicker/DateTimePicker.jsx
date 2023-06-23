@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { SIZES, icons } from "../../../constants";
+import themeContext from "../../../constants/themeContext";
 import styles from "./dateTimePicker.style";
 
 const DateTimePicker = ({ date, setDate }) => {
+  const theme = useContext(themeContext);
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
     setDate(currentDate);
@@ -34,15 +36,15 @@ const DateTimePicker = ({ date, setDate }) => {
     <View style={{ marginLeft: SIZES.big }}>
       <TouchableOpacity onPress={pickADate} style={styles.container}>
         <Image source={icons.alarm} style={styles.image} />
-     
-        <Text style={styles.text}>
+
+        <Text style={[styles.text, { color: theme.text }]}>
           {date.toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
           })}
-           ,
+          ,
         </Text>
-        <Text style={styles.text}>
+        <Text style={[styles.text, { color: theme.text }]}>
           {date.toLocaleDateString("en-US", options)}
         </Text>
       </TouchableOpacity>

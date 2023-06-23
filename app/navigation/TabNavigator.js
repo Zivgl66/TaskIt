@@ -1,8 +1,8 @@
 import React from "react";
-import GroupTasks from "../grouptasks/index";
-import Home from "../home";
-import CompletedTasks from "../completedtasks/index";
+import CompletedNavigator from "./CompletedNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import MainStackNavigator from "./StackNavigator";
+import GroupNavigator from "./GroupNavigator";
 import { FontAwesome5 } from "@expo/vector-icons";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
@@ -30,9 +30,9 @@ const BottomTabNavigator = () => {
         },
       })}
     >
-      <Tab.Screen name="Tasks" component={Home} />
-      <Tab.Screen name="Groups" component={GroupTasks} />
-      <Tab.Screen name="Completed" component={CompletedTasks} />
+      <Tab.Screen name="Tasks" component={MainStackNavigator} />
+      <Tab.Screen name="Groups" component={GroupNavigator} />
+      <Tab.Screen name="Completed" component={CompletedNavigator} />
     </Tab.Navigator>
   );
 };

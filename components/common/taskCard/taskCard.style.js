@@ -5,9 +5,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  containerTaskDetails: {
-    marginTop: SIZES.xLarge,
-  },
   taskDetails: {
     flex: 1,
     flexDirection: "row",

@@ -8,7 +8,7 @@ import { useIsFocused } from "@react-navigation/native";
 import { COLORS } from "../../../constants";
 import { EventRegister } from "react-native-event-listeners";
 
-const TodaysTasks = () => {
+const TodaysTasks = ({ route, navigation }) => {
   const [allTasks, setAllTasks] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const isFocused = useIsFocused();
@@ -43,7 +43,14 @@ const TodaysTasks = () => {
       ) : (
         <View style={styles.containerAllTasks}>
           {allTasks?.map((task, index) => {
-            if (!task.isComplete) return <TaskBox key={index} task={task} />;
+            if (!task.isComplete)
+              return (
+                <TaskBox
+                  key={index}
+                  task={task}
+                  navigation={navigation}
+                />
+              );
           })}
         </View>
       )}

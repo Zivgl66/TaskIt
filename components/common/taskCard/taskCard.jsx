@@ -1,14 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useRouter } from "expo-router";
-import {
-  View,
-  ScrollView,
-  ToastAndroid,
-  Switch,
-  Text,
-  TouchableOpacity,
-  Image,
-} from "react-native";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { View, ScrollView, ToastAndroid, Switch, Text } from "react-native";
 import {
   deleteTaskById,
   editTaskIdentifierById,
@@ -31,12 +22,12 @@ import CardBtn from "../cardBtn/CardBtn";
 import GroupBox from "../groupBox/GroupBox";
 import ScreenHeaderBtn from "../header/ScreenHeaderBtn";
 import ModalGroups from "../modalGroups/ModalGroups";
-import theme from "../../../constants/colorTheme";
+import themeContext from "../../../constants/themeContext";
+
 // import { useNavigation } from "@react-navigation/core";
 
-const TaskCard = ({ task, group, allGroups }) => {
-  const router = useRouter();
-  const [isEnabled, setIsEnabled] = useState(task.isAlarmOn);
+const TaskCard = ({ task, group, allGroups, navigation }) => {
+  const [isEnabled, setIsEnabled] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalGroupsVisible, setIsModalGroupsVisible] = useState(false);
@@ -46,7 +37,7 @@ const TaskCard = ({ task, group, allGroups }) => {
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
-  const [darkMode, setDarkMode] = useState(false);
+  const theme = useContext(themeContext);
 
   const toggleSwitch = async () => {
     setIsEnabled((previousState) => !previousState);
@@ -74,11 +65,15 @@ const TaskCard = ({ task, group, allGroups }) => {
   const handleDelete = async () => {
     await deleteTaskById(task.id);
     EventRegister.emit("tasks changed");
-    router.back();
+    navigation.goBack();
   };
   const handleTextEdit = () => setIsEditing(false);
 
   const handleCloseEdit = () => setIsEditing(false);
+
+  useEffect(() => {
+    setIsEnabled(task.isAlarmOn);
+  }, []);
 
   //    Notification listener (and request handeler)
   useEffect(() => {
@@ -103,23 +98,12 @@ const TaskCard = ({ task, group, allGroups }) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const listener = EventRegister.addEventListener("Theme change", (data) => {
-  //     console.log("changed theme : ", data);
-  //     setDarkMode(data);
-  //   });
-  //   return () => {
-  //     EventRegister.removeAllListeners(listener);
-  //   };
-  // }, []);
-
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
-      style={{ flex: 1, backgroundColor: COLORS.lightWhite }}
       contentContainerStyle={{
         flex: 1,
-        backgroundColor: theme?.backgroundColor,
+        backgroundColor: theme.backgroundColor,
       }}
     >
       {isModalVisible && (
@@ -141,19 +125,16 @@ const TaskCard = ({ task, group, allGroups }) => {
         style={[
           styles.container,
           {
-            backgroundColor: darkMode
-              ? theme.dark.backgroundColor
-              : theme.light.backgroundColor,
+            backgroundColor: theme.backgroundColor,
           },
         ]}
       >
         <View style={styles.header}>
-          {/* <TouchableOpacity onPress={() => router.back()}>
-            <Image source={icons.chevronLeft}  />
-          </TouchableOpacity> */}
           <ScreenHeaderBtn
             dimension={"50%"}
-            handlePress={() => router.back()}
+            handlePress={() => {
+              navigation.goBack();
+            }}
             iconUrl={icons.chevronLeft}
           />
         </View>
@@ -165,21 +146,23 @@ const TaskCard = ({ task, group, allGroups }) => {
               handleTextEdit={handleTextEdit}
             />
           ) : (
-            <TaskBox task={task} taskTextSize={SIZES.large} />
+            <TaskBox
+              task={task}
+              taskTextSize={SIZES.large}
+              navigation={navigation}
+            />
           )}
         </View>
         <View
           style={[
             styles.groupContainer,
             {
-              backgroundColor: darkMode
-                ? theme.dark.backgroundColor
-                : theme.light.backgroundColor,
+              backgroundColor: theme.backgroundColor,
             },
           ]}
         >
           {group ? (
-            <GroupBox group={group} />
+            <GroupBox group={group} navigation={navigation} />
           ) : (
             <View style={styles.containerGroupBtns}>
               <Text style={styles.textGroup}>Add to a group</Text>
