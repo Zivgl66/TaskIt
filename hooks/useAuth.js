@@ -5,9 +5,10 @@ import React, {
   useEffect,
   useMemo,
 } from "react";
+import { COLORS } from "../constants";
+import { View, ActivityIndicator } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   GoogleAuthProvider,
   onAuthStateChanged,
@@ -42,9 +43,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(
     () =>
       onAuthStateChanged(auth, (user) => {
-        console.log("works", user);
         if (user) {
-          console.log("theres a user: ", user);
           setUser(user);
         } else {
           setUser(null);
@@ -99,7 +98,15 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={memoedValue}>
-      {!loadingInitial && children}
+      {loadingInitial === true ? (
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <ActivityIndicator size="large" color={COLORS.primary} />
+        </View>
+      ) : (
+        children
+      )}
     </AuthContext.Provider>
   );
 };

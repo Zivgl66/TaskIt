@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import { View, ScrollView, SafeAreaView, Text, Switch } from "react-native";
-import { COLORS, SIZES } from "../constants";
+import { View, ScrollView, Text, Switch } from "react-native";
+import { SIZES } from "../constants";
 import { EventRegister } from "react-native-event-listeners";
 import themeContext from "../constants/themeContext";
 

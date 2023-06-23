@@ -1,6 +1,14 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "expo-router";
-import { View, ScrollView, ToastAndroid, Switch, Text } from "react-native";
+import {
+  View,
+  ScrollView,
+  ToastAndroid,
+  Switch,
+  Text,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import {
   deleteTaskById,
   editTaskIdentifierById,
@@ -8,7 +16,6 @@ import {
 } from "../../../utils/storage";
 import styles from "./taskCard.style";
 import { EventRegister } from "react-native-event-listeners";
-
 import * as Notifications from "expo-notifications";
 import {
   registerForPushNotificationsAsync,
@@ -24,7 +31,8 @@ import CardBtn from "../cardBtn/CardBtn";
 import GroupBox from "../groupBox/GroupBox";
 import ScreenHeaderBtn from "../header/ScreenHeaderBtn";
 import ModalGroups from "../modalGroups/ModalGroups";
-import themeContext from "../../../constants/themeContext";
+import theme from "../../../constants/colorTheme";
+// import { useNavigation } from "@react-navigation/core";
 
 const TaskCard = ({ task, group, allGroups }) => {
   const router = useRouter();
@@ -38,8 +46,7 @@ const TaskCard = ({ task, group, allGroups }) => {
   const [notification, setNotification] = useState(false);
   const notificationListener = useRef();
   const responseListener = useRef();
-  const theme = useContext(themeContext);
-  console.log(theme);
+  const [darkMode, setDarkMode] = useState(false);
 
   const toggleSwitch = async () => {
     setIsEnabled((previousState) => !previousState);
@@ -96,6 +103,16 @@ const TaskCard = ({ task, group, allGroups }) => {
     };
   }, []);
 
+  // useEffect(() => {
+  //   const listener = EventRegister.addEventListener("Theme change", (data) => {
+  //     console.log("changed theme : ", data);
+  //     setDarkMode(data);
+  //   });
+  //   return () => {
+  //     EventRegister.removeAllListeners(listener);
+  //   };
+  // }, []);
+
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
@@ -120,7 +137,26 @@ const TaskCard = ({ task, group, allGroups }) => {
           allGroups={allGroups}
         />
       )}
-      <View style={[styles.container, { backgroundColor: COLORS.lightWhite }]}>
+      <View
+        style={[
+          styles.container,
+          {
+            backgroundColor: darkMode
+              ? theme.dark.backgroundColor
+              : theme.light.backgroundColor,
+          },
+        ]}
+      >
+        <View style={styles.header}>
+          {/* <TouchableOpacity onPress={() => router.back()}>
+            <Image source={icons.chevronLeft}  />
+          </TouchableOpacity> */}
+          <ScreenHeaderBtn
+            dimension={"50%"}
+            handlePress={() => router.back()}
+            iconUrl={icons.chevronLeft}
+          />
+        </View>
         <View style={styles.containerTaskDetails}>
           {isEditing ? (
             <TaskEdit
@@ -135,7 +171,11 @@ const TaskCard = ({ task, group, allGroups }) => {
         <View
           style={[
             styles.groupContainer,
-            { backgroundColor: COLORS.lightWhite },
+            {
+              backgroundColor: darkMode
+                ? theme.dark.backgroundColor
+                : theme.light.backgroundColor,
+            },
           ]}
         >
           {group ? (
