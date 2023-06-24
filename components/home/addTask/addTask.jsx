@@ -1,11 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
-import { View, TextInput, ToastAndroid } from "react-native";
+import { View, TextInput, ToastAndroid ,TouchableOpacity} from "react-native";
 import styles from "./addTask.style";
-import { icons } from "../../../constants";
-import ScreenHeaderBtn from "../../common/header/ScreenHeaderBtn";
+// import { icons } from "../../../constants";
+// import ScreenHeaderBtn from "../../common/header/ScreenHeaderBtn";
 import { setItemInStorage } from "../../../utils/storage";
 import { EventRegister } from "react-native-event-listeners";
 import themeContext from "../../../constants/themeContext";
+import LottieView from "lottie-react-native";
+import plusAnimation from "../../../Assets/animation/92660-another-plus-icon.json";
 
 const AddTask = () => {
   const [newTask, setNewTask] = useState("");
@@ -46,11 +48,22 @@ const AddTask = () => {
         onBlur={() => setBackgroundColor(theme.inputBlur)}
       ></TextInput>
 
-      <ScreenHeaderBtn
+      {/* <ScreenHeaderBtn
         iconUrl={icons.plus}
         dimension="60%"
         handlePress={handleAddTask}
-      />
+      /> */}
+      <TouchableOpacity onPress={handleAddTask}>
+        <LottieView
+          autoPlay
+          style={{
+            width: 50,
+            height: 50,
+            backgroundColor: theme.backgroundColor,
+          }}
+          source={plusAnimation}
+        />
+      </TouchableOpacity>
     </View>
   );
 };
