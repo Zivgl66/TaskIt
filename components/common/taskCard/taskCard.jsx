@@ -165,7 +165,9 @@ const TaskCard = ({ task, group, allGroups, navigation }) => {
             <GroupBox group={group} navigation={navigation} />
           ) : (
             <View style={styles.containerGroupBtns}>
-              <Text style={styles.textGroup}>Add to a group</Text>
+              <Text style={[styles.textGroup, { color: theme.text }]}>
+                Add to a group
+              </Text>
               <ScreenHeaderBtn
                 iconUrl={icons.plus}
                 dimension={"50%"}

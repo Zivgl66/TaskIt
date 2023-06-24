@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
+    marginRight: SIZES.small,
   },
   image: {
     width: SIZES.big,

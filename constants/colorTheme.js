@@ -5,6 +5,7 @@ const theme = {
     backgroundColor: "#FAFAFC",
     semiBackgroundColor: "#FAFAFC",
     shadowColor: "#FFFFFF",
+    header: "#161313",
   },
   dark: {
     theme: "dark",
@@ -12,6 +13,7 @@ const theme = {
     backgroundColor: "#2b2828",
     semiBackgroundColor: "#494848",
     shadowColor: "#FFFFFF",
+    header: "#7028aa",
   },
 };
 

@@ -26,7 +26,6 @@ const Group = ({ route, navigation }) => {
   const fetchData = async () => {
     console.log("fetch data in groups!");
     const data = await getGroupById(groupId);
-    console.log(data);
     if (data) {
       const allTasksData = await getTasksFromStorage();
       setTasks(allTasksData.filter((task) => task.group === data.name));

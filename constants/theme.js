@@ -10,6 +10,7 @@ const COLORS = {
   darkBGC: "#c9e5faE6",
   white: "#F3F4F8",
   lightWhite: "#FAFAFC",
+  
 
   //task colors
   blue: "#148ae2",

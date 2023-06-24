@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     ...SHADOWS.small,
     padding: SIZES.medium,
+    height: 100,
   },
   containerBtn: {
     flex: 1,

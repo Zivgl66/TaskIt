@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import BottomTabNavigator from "./TabNavigator";
-import MainStackNavigator from "./StackNavigator";
 import ScreenHeaderProfileBtn from "../../components/common/header/screenheaderProfile";
+import { FONT, SIZES } from "../../constants";
 import Settings from "../settings";
 import Logout from "../logout";
 import Login from "../login";
 import useAuth from "../../hooks/useAuth";
+import themeContext from "../../constants/themeContext";
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   const { user } = useAuth();
+  const theme = useContext(themeContext);
 
   return (
     <Drawer.Navigator
-      initialRouteName="Todos"
+      initialRouteName="TaskIt"
+      title="TaskIt"
       headerMode="screen"
       screenOptions={({ navigation }) => ({
         headerLeft: () => (
@@ -27,12 +30,17 @@ const DrawerNavigator = () => {
             }}
           />
         ),
-        headerLeftContainerStyle: { paddingLeft: 15 },
+        headerTitleStyle: {
+          color: theme.header,
+          fontFamily: FONT.extrabold,
+          fontSize: SIZES.xLarge,
+        },
+        headerLeftContainerStyle: { paddingLeft: 15, marginRight: -10 },
       })}
     >
       {user ? (
         <>
-          <Drawer.Screen name="Todos" component={BottomTabNavigator} />
+          <Drawer.Screen name="TaskIt" component={BottomTabNavigator} />
           <Drawer.Screen name="Settings" component={Settings} />
           <Drawer.Screen name="Logout" component={Logout} />
         </>

@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
-
-import { COLORS, SIZES, SHADOWS } from "../../../constants";
+import { SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
   btnContainer: {
@@ -10,8 +9,6 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.small / 1.25,
     justifyContent: "center",
     alignItems: "center",
-    // ...SHADOWS.small,
-    borderRadius: SIZES.small / 0.5,
   },
   btnImg: (dimension) => ({
     width: dimension,

@@ -14,6 +14,7 @@ const BottomTabNavigator = () => {
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: { padding: 2 },
+        tabBarItemStyle: { padding: 3 },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === "Tasks") {

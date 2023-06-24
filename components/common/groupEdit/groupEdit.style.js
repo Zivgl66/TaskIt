@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     ...SHADOWS.small,
     padding: SIZES.medium,
+    width: 300,
+    height: 100,
+    marginTop: SIZES.small,
   },
   containerBtn: {
     flex: 1,

@@ -17,7 +17,7 @@
         "backgroundColor": "#FFFFFF"
       }
     },
-    "name": "TodoApp",
+    "name": "TaskIt",
     "icon": "./Assets/images/appLogo.png",
     "slug": "TodoApp",
     "extra": {

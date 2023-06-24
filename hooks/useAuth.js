@@ -34,10 +34,10 @@ export const AuthProvider = ({ children }) => {
         "811978311920-gahfcrf6l6rmuhurjilpttndfk8f28gm.apps.googleusercontent.com",
       androidClientId:
         "811978311920-2ga3psnvrbhd1sv5qe72qj6gts8js6q0.apps.googleusercontent.com",
-    },
-    {
-      useProxy: true,
     }
+    // {
+    //   useProxy: true,
+    // }
   );
 
   useEffect(
