@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import WelcomeBtn from "../components/common/welcomeBtn/WelcomeBtn";
 import { COLORS } from "../constants";
 import useAuth from "../hooks/useAuth";

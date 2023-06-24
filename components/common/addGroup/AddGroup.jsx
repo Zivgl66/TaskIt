@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { View, TextInput, ToastAndroid } from "react-native";
 import styles from "./addGroup.style";
 import { icons } from "../../../constants";
@@ -6,13 +6,14 @@ import ScreenHeaderBtn from "../../common/header/ScreenHeaderBtn";
 import { setItemInStorageGroup } from "../../../utils/storage_group";
 import { EventRegister } from "react-native-event-listeners";
 import themeContext from "../../../constants/themeContext";
-import { COLORS } from "../../../constants";
 
 const AddGroup = () => {
   const [newGroup, setNewGroup] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState(COLORS.lightBGC);
+  const [backgroundColor, setBackgroundColor] = useState(null);
   const theme = useContext(themeContext);
-
+  useEffect(() => {
+    setBackgroundColor(theme.inputBlur);
+  }, [theme]);
   const handleAddGroup = async () => {
     if (newGroup != "") {
       await setItemInStorageGroup(newGroup);
@@ -40,10 +41,10 @@ const AddGroup = () => {
           styles.textInput,
           { backgroundColor: backgroundColor, color: theme.text },
         ]}
-        placeholderTextColor="#c2c2c2"
+        placeholderTextColor={theme.text}
         placeholder="Add a Group"
-        onFocus={() => setBackgroundColor(COLORS.darkBGC)}
-        onBlur={() => setBackgroundColor(COLORS.lightBGC)}
+        onFocus={() => setBackgroundColor(theme.inputFocus)}
+        onBlur={() => setBackgroundColor(theme.inputBlur)}
       ></TextInput>
 
       <ScreenHeaderBtn

@@ -6,7 +6,7 @@ import React, {
   useMemo,
 } from "react";
 import { COLORS } from "../constants";
-import { View, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator, ToastAndroid } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import {
@@ -45,6 +45,11 @@ export const AuthProvider = ({ children }) => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           setUser(user);
+          ToastAndroid.showWithGravity(
+            "Welcome back, Let's get things done!",
+            ToastAndroid.LONG,
+            ToastAndroid.BOTTOM
+          );
         } else {
           setUser(null);
         }

@@ -32,7 +32,10 @@ const TaskBox = ({ task, taskTextSize, navigation }) => {
   return (
     <TouchableOpacity onPress={handleTaskPress}>
       <View
-        style={[styles.container, { backgroundColor: theme?.backgroundColor }]}
+        style={[
+          styles.container,
+          { backgroundColor: theme?.semiBackgroundColor },
+        ]}
       >
         <Checkbox
           style={styles.checkbox}

@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  containerTaskDetails: {
+    flex: 1,
+    marginRight: 10,
+  },
   groupContainer: {
     flex: 1,
   },

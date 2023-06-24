@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { View, TextInput, ToastAndroid } from "react-native";
 import styles from "./addTask.style";
 import { icons } from "../../../constants";
@@ -7,13 +7,14 @@ import { setItemInStorage } from "../../../utils/storage";
 import { EventRegister } from "react-native-event-listeners";
 import themeContext from "../../../constants/themeContext";
 
-import { COLORS } from "../../../constants";
-
 const AddTask = () => {
   const [newTask, setNewTask] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState(COLORS.lightBGC);
+  const [backgroundColor, setBackgroundColor] = useState(null);
   const theme = useContext(themeContext);
 
+  useEffect(() => {
+    setBackgroundColor(theme.inputBlur);
+  }, [theme]);
   const handleAddTask = async () => {
     if (newTask != "") {
       await setItemInStorage(newTask);
@@ -39,10 +40,10 @@ const AddTask = () => {
           styles.textInput(theme.text),
           { backgroundColor: backgroundColor },
         ]}
-        placeholderTextColor="#c2c2c2"
+        placeholderTextColor={theme.text}
         placeholder="do something..."
-        onFocus={() => setBackgroundColor(COLORS.darkBGC)}
-        onBlur={() => setBackgroundColor(COLORS.lightBGC)}
+        onFocus={() => setBackgroundColor(theme.inputFocus)}
+        onBlur={() => setBackgroundColor(theme.inputBlur)}
       ></TextInput>
 
       <ScreenHeaderBtn
