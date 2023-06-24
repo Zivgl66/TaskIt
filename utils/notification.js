@@ -1,5 +1,8 @@
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
+import { EventRegister } from "react-native-event-listeners";
+import * as TaskManager from "expo-task-manager";
+const BACKGROUND_NOTIFICATION_TASK = "BACKGROUND-NOTIFICATION-TASK";
 
 //    Register notification
 Notifications.setNotificationHandler({
@@ -13,7 +16,7 @@ Notifications.setNotificationHandler({
 const schedulePushNotification = async (taskName, dueDate) => {
   let identifier = await Notifications.scheduleNotificationAsync({
     content: {
-      title: "Todo",
+      title: "TaskIt",
       body: `${taskName}`,
     },
     trigger: { date: dueDate },

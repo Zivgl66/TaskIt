@@ -48,7 +48,8 @@
     "react-native-svg": "13.4.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.7",
-    "lottie-react-native": "5.1.4"
+    "lottie-react-native": "5.1.4",
+    "expo-task-manager": "~11.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",

@@ -62,6 +62,18 @@ const TaskCard = ({ task, group, allGroups, navigation }) => {
     }
   };
 
+  useEffect(() => {
+    const listener = EventRegister.addEventListener(
+      "notification entered!",
+      () => {
+        console.log("notification recieved");
+      }
+    );
+    return () => {
+      EventRegister.removeAllListeners(listener);
+    };
+  }, []);
+
   const handleDelete = async () => {
     await deleteTaskById(task.id);
     EventRegister.emit("tasks changed");

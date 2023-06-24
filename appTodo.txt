@@ -1,5 +1,4 @@
-DarkMode: 
-* fix dark mode in out of provider components and routes (group card & task card).
+After the alarm goes off, change the switch to false.
 
 ENV:
 * make an .env file for client ids.
