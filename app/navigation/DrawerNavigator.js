@@ -3,9 +3,9 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import BottomTabNavigator from "./TabNavigator";
 import ScreenHeaderProfileBtn from "../../components/common/header/screenheaderProfile";
 import { FONT, SIZES } from "../../constants";
-import Settings from "../settings";
-import Logout from "../logout";
-import Login from "../login";
+import Settings from "../screens/settings";
+import Logout from "../screens/logout";
+import Login from "../screens/login";
 import useAuth from "../../hooks/useAuth";
 import themeContext from "../../constants/themeContext";
 

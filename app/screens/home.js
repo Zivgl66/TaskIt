@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { View, ScrollView, SafeAreaView, Text } from "react-native";
-import { SIZES } from "../constants";
-import TodaysTasks from "../components/home/allTasks/TodaysTasks";
-import themeContext from "../constants/themeContext";
+import { SIZES } from "../../constants";
+import TodaysTasks from "../../components/home/allTasks/TodaysTasks";
+import themeContext from "../../constants/themeContext";
 
 const Home = ({ navigation }) => {
   const theme = useContext(themeContext);

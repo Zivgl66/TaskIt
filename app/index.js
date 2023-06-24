@@ -10,19 +10,33 @@ import { AuthProvider } from "../hooks/useAuth";
 import { EventRegister } from "react-native-event-listeners";
 import theme from "../constants/colorTheme";
 import themeContext from "../constants/themeContext";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const listener = EventRegister.addEventListener("Theme change", (data) => {
-      console.log("theme changed", data);
       setDarkMode(data);
     });
     return () => {
       EventRegister.removeAllListeners(listener);
     };
   }, [darkMode]);
+
+  useEffect(() => {
+    const getThemeFromStorage = async () => {
+      let themeStorage = await AsyncStorage.getItem("@theme");
+      
+      if (themeStorage) {
+        parsedTheme = JSON.parse(themeStorage);
+        setDarkMode(parsedTheme);
+        EventRegister.emit("Theme change", parsedTheme);
+      }
+    };
+
+    getThemeFromStorage();
+  }, []);
 
   const registerForPushNotificationsAsync = async () => {
     const { status } = await Notifications.requestPermissionsAsync();

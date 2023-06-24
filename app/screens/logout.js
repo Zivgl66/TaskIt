@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ActivityIndicator, ToastAndroid } from "react-native";
-import { COLORS } from "../constants";
-import useAuth from "../hooks/useAuth";
+import { COLORS } from "../../constants";
+import useAuth from "../../hooks/useAuth";
 
 const Logout = () => {
   const { logout } = useAuth();

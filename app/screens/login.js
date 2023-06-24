@@ -1,8 +1,8 @@
 import React from "react";
 import { View, ActivityIndicator } from "react-native";
-import WelcomeBtn from "../components/common/welcomeBtn/WelcomeBtn";
-import { COLORS } from "../constants";
-import useAuth from "../hooks/useAuth";
+import WelcomeBtn from "../../components/common/welcomeBtn/WelcomeBtn";
+import { COLORS } from "../../constants";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const { request, promptAsync, loading } = useAuth();
