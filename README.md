@@ -1,7 +1,8 @@
 
 # TaskIt App
 
-![alt text](https://ibb.co/SnmCfPx)
+![1](https://github.com/Zivgl66/TaskIt/assets/95753868/ddd7b667-b7e7-41ef-b688-4947381045dc)
+
 
 ## Description
 
@@ -41,13 +42,13 @@ npx expo start
 ## Usage
 
 ### IHome screen shows your current tasks. 
-<img src="https://ibb.co/NYXG5c9" height="60%" width="60%" >
+![background5](https://github.com/Zivgl66/TaskIt/assets/95753868/064706b6-2bab-40f5-81d3-9ccf3e45f9e1)
 
 ### Total customization of your tasks and groups.
-<img src="https://ibb.co/hFqGXsw" height="60%" width="60%" >
+![background1](https://github.com/Zivgl66/TaskIt/assets/95753868/fc98f58e-068a-428e-9213-ba4e59fc7b7d)
 
 ### Googlo signin, your tasks are saved to your user.
-<img src="https://ibb.co/SKwQtKB" height="50%" width="60%" >
+![background6](https://github.com/Zivgl66/TaskIt/assets/95753868/dc1106ad-2ce7-471b-ad45-59c786c495a6)
 
 
 
