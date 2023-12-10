@@ -41,13 +41,13 @@ npx expo start
 
 ## Usage
 
-### IHome screen shows your current tasks. 
+### Home screen shows your current tasks. 
 ![background5](https://github.com/Zivgl66/TaskIt/assets/95753868/064706b6-2bab-40f5-81d3-9ccf3e45f9e1)
 
 ### Total customization of your tasks and groups.
 ![background1](https://github.com/Zivgl66/TaskIt/assets/95753868/fc98f58e-068a-428e-9213-ba4e59fc7b7d)
 
-### Googlo signin, your tasks are saved to your user.
+### Googlo SignIn, your tasks are saved to your user.
 ![background6](https://github.com/Zivgl66/TaskIt/assets/95753868/dc1106ad-2ce7-471b-ad45-59c786c495a6)
 
 
