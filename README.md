@@ -1,6 +1,8 @@
 
 # TaskIt App
 
+![alt text](https://ibb.co/SnmCfPx)
+
 ## Description
 
 This project is a mobile task management application developed using React Native. The app allows users to efficiently organize and manage their tasks on the go.
